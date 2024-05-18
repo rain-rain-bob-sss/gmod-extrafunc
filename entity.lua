@@ -18,3 +18,4 @@ end
 function ENTMETA:IsMarkedAsRemoved()
   return self:IsEFlagSet(EFL_KILLME)
 end
+UTIL_Remove=ENTMETA.Remove
