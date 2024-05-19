@@ -19,6 +19,7 @@ function ENTMETA:IsMarkedAsRemoved()
   return self:IsEFlagSet(EFL_KILLME)
 end
 UTIL_Remove=ENTMETA.Remove
+util.Remove=ENTMETA.Remove
 local vec_zero=Vector(0,0,0)
 function ENTMETA:StopVelocity()
   if(self:IsPlayer())then self:SetVelocity(-self:GetVelocity()) end
