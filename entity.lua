@@ -2,7 +2,7 @@ local ENTMETA = FindMetaTable"Entity"
 local SSV = ENTMETA.SetSaveValue
 local GSV = ENTMETA.GetSaveValue
 ENTMETA.SetEFlags_Old = ENTMETA.SetEFlags
-ENTMETA.addEFlags_Old = ENTMETA.AddEFlags
+ENTMETA.AddEFlags_Old = ENTMETA.AddEFlags
 function ENTMETA:SetEFlags(eflags)
     SSV(self, "m_iEFlags", eflags)
 end
