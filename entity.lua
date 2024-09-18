@@ -39,7 +39,7 @@ function ENTMETA:StopVelocity()
         if IsValid(phy) then phy:SetVelocity(vec_zero) end
     end
 
-    SSV(self, "m_flVelocity", tostring(vec_zero))
+    SSV(self, "m_flVelocity", vec_zero)
 end
 
 function ENTMETA:SetThrower(thrower)
