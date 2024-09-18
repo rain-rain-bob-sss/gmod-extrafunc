@@ -1,7 +1,13 @@
 local ENTMETA = FindMetaTable"Entity"
+
 local SSV = ENTMETA.SetSaveValue
 local GSV = ENTMETA.GetSaveValue
 local GEFL=ENTMETA.GetEFlags
+local GETPHYCOUNT=ENTMETA.GetPhysicsObjectCount
+local GETPHYNUM=ENTMETA.GetPhysicsObjectNum
+local SETVEL=ENTMETA.SetVelocity
+local GETVEL=ENTMETA.GetVelocity
+--no ISPLY
 ENTMETA.SetEFlags_Old = ENTMETA.SetEFlags
 ENTMETA.AddEFlags_Old = ENTMETA.AddEFlags
 function ENTMETA:SetEFlags(eflags)
@@ -33,10 +39,10 @@ UTIL_Remove = ENTMETA.Remove
 util.Remove = ENTMETA.Remove
 local vec_zero = Vector(0, 0, 0)
 function ENTMETA:StopVelocity()
-    if self:IsPlayer() then self:SetVelocity(-self:GetVelocity()) end
-    self:SetVelocity(vec_zero)
-    for i = 0, self:GetPhysicsObjectCount() do
-        local phy = self:GetPhysicsObjectNum(i)
+    if self:IsPlayer() then SETVEL(self,-GETVEL(self)) end
+    SETVEL(self,vec_zero)
+    for i = 0, GETPHYCOUNT(self) - 1 do
+        local phy = GETPHYNUM(self,i)
         if IsValid(phy) then phy:SetVelocity(vec_zero) end
     end
 
