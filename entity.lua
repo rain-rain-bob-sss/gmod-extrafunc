@@ -1,6 +1,7 @@
 local ENTMETA = FindMetaTable"Entity"
 local SSV = ENTMETA.SetSaveValue
 local GSV = ENTMETA.GetSaveValue
+local GEFL=ENTMETA.GetEFlags
 ENTMETA.SetEFlags_Old = ENTMETA.SetEFlags
 ENTMETA.AddEFlags_Old = ENTMETA.AddEFlags
 function ENTMETA:SetEFlags(eflags)
@@ -8,7 +9,7 @@ function ENTMETA:SetEFlags(eflags)
 end
 
 function ENTMETA:AddEFlags(eflags) --Fix cant add EFL_KILLME
-    SSV(self, "m_iEFlags'", bit.bor(self:GetEFlags(), eflags))
+    SSV(self, "m_iEFlags'", bit.bor(GEFL(self), eflags))
 end
 
 function ENTMETA:StopThink()
